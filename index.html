@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050817">
+  <meta name="description" content="時空特勤｜行動代號 ACCUDATA。時空管理局緊急召集令。">
+  <title>時空特勤｜ACCUDATA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="nebula nebula-a"></div><div class="nebula nebula-b"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="時空管理局首頁"><span class="brand-mark">TCA</span><span>TIME CONTROL AGENCY</span></a>
+    <div class="top-actions">
+      <div class="signal"><i></i> SECURE TRANSMISSION <span>／</span> <b>LIVE</b></div>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">♫ 音效 OFF</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="side-code" aria-hidden="true">TCA // FIELD OPERATIONS // 2026</div>
+    <section class="mission-window" aria-live="polite">
+      <div class="window-head">
+        <span><i class="tiny-dot"></i> INCOMING TRANSMISSION</span>
+        <span id="sceneCount">01 / 07</span>
+      </div>
+      <div class="mission-status">
+        <div class="countdown-wrap"><span class="status-label">裂縫穩定度倒數</span><strong id="countdown">02:00</strong></div>
+        <span class="status-live" id="countdownStatus">TEMPORAL FIELD STABLE</span>
+      </div>
+      <div class="progress-track"><div id="progress"></div></div>
+
+      <section class="scene active" data-scene="0">
+        <p class="eyebrow">EMERGENCY ALERT // PRIORITY ZERO</p>
+        <div class="alert-symbol">!</div>
+        <h1 class="glitch" data-text="時空異常警報">時空異常警報</h1>
+        <p class="eng-title">SPACE-TIME ANOMALY DETECTED</p>
+        <div class="typing-lines">
+          <p>警告！警告！</p>
+          <p>偵測到未知時空裂縫。</p>
+          <p>時間軸出現異常波動，時空屏障正在崩解……</p>
+        </div>
+        <button class="primary next">接收緊急訊息 <span>→</span></button>
+      </section>
+
+      <section class="scene" data-scene="1">
+        <p class="eyebrow">THREAT ASSESSMENT // CRITICAL</p>
+        <p class="kicker">TEMPORAL COLLAPSE IMMINENT</p>
+        <h2>這不只是時間錯亂。<br><em>而是整個時空的存亡。</em></h2>
+        <div class="message-card">
+          <p>若未能及時修復時空裂縫，不同時間線將相互交錯。</p>
+          <p>歷史將被改寫，未來將失去原有軌跡。</p>
+          <p class="warning-text">一旦時空結構完全失衡，將造成不可逆的災難。</p>
+        </div>
+        <p class="dramatic">這一次，我們沒有重來的機會。</p>
+        <button class="primary next">查看召集令 <span>→</span></button>
+      </section>
+
+      <section class="scene" data-scene="2">
+        <p class="eyebrow">OFFICIAL RECRUITMENT // TCA</p>
+        <div class="agency-seal">TCA<span>TIME CONTROL<br>AGENCY</span></div>
+        <p class="kicker">TIME CONTROL AGENCY</p>
+        <h2>時空管理局<br><em>緊急召集令</em></h2>
+        <div class="typing-lines">
+          <p>致所有具備時空任務執行資格的特空人員：</p>
+          <p>時空管理局正式發布緊急召集令。</p>
+          <p>現招募各位加入本次跨時空救援行動。</p>
+        </div>
+        <p class="dramatic">特空們，準備好接受任務了嗎？</p>
+        <button class="primary next">開啟任務簡報 <span>→</span></button>
+      </section>
+
+      <section class="scene" data-scene="3">
+        <p class="eyebrow">MISSION BRIEFING // CLASSIFIED</p>
+        <p class="kicker">OPERATION CODE</p>
+        <h2 class="operation">ACCU<span>DATA</span></h2>
+        <p class="mission-desc">進入指定時空區域，破解異常訊號，尋找修復時空裂縫的關鍵線索。</p>
+        <div class="intel-grid">
+          <div><small>MISSION TYPE</small><strong>密室逃脫・團隊解謎</strong></div>
+          <div><small>DATE / TIME</small><strong id="eventDate">活動日期與時間待公布</strong></div>
+          <div><small>LOCATION</small><strong id="eventLocation">活動地點待公布</strong></div>
+          <div><small>ASSEMBLY</small><strong id="eventAssembly">集合資訊待公布</strong></div>
+        </div>
+        <p class="hint">請確認任務時間與地點，再進行出勤回覆。</p>
+        <button class="primary next">確認任務資訊 <span>→</span></button>
+      </section>
+
+      <section class="scene" data-scene="4">
+        <p class="eyebrow">PERSONNEL STATUS // RSVP</p>
+        <h2>特空人員，<br><em>是否接受本次召集？</em></h2>
+        <p class="subcopy">時空管理局正在等待你的回覆。</p>
+        <div class="choice-list">
+          <button class="choice" data-choice="願意參加"><span class="choice-icon">✓</span><span><b>接受任務</b><small>我願意加入，拯救時空。</small></span><span class="choice-arrow">→</span></button>
+          <button class="choice" data-choice="無法參加"><span class="choice-icon">×</span><span><b>無法出勤</b><small>本次無法參與，期待下次召集。</small></span><span class="choice-arrow">→</span></button>
+        </div>
+      </section>
+
+      <section class="scene" data-scene="5">
+        <p class="eyebrow">IDENTITY VERIFICATION // PERSONNEL FILE</p>
+        <h2>建立你的<br><em>特工身分檔案</em></h2>
+        <p class="subcopy" id="formIntro">請輸入姓名，完成特工身分識別。</p>
+        <form id="agentForm">
+          <label for="agentName">AGENT NAME <span>／ 姓名</span></label>
+          <input id="agentName" name="name" type="text" maxlength="40" placeholder="輸入你的姓名" autocomplete="name" required>
+          <div class="form-note">資料將提交至時空管理局人員名冊。</div>
+          <button class="primary submit" type="submit">確認入檔 <span>→</span></button>
+        </form>
+        <p class="form-error" id="formError" role="alert"></p>
+      </section>
+
+      <section class="scene" data-scene="6">
+        <p class="eyebrow">REGISTRATION COMPLETE // ACCESS GRANTED</p>
+        <div class="success-ring"><span>✓</span></div>
+        <p class="kicker">PERSONNEL FILE CREATED</p>
+        <h2 id="finalTitle">特工資料已成功建檔</h2>
+        <div class="agent-number">AGENT <strong>0000</strong></div>
+        <p class="final-name" id="finalName"></p>
+        <p class="final-copy" id="finalCopy">歡迎加入時空特勤小隊。<br>時空的未來，就交給各位了。</p>
+        <p class="dramatic">期待各位特空，成功完成任務，拯救時空！</p>
+        <article class="agent-card" id="agentCard">
+          <div class="card-topline"><span>TIME CONTROL AGENCY</span><span>CLASSIFIED</span></div>
+          <div class="card-emblem">TCA</div>
+          <p class="card-kicker">TEMPORAL FIELD AGENT</p>
+          <h3 id="cardName">AGENT NAME</h3>
+          <div class="card-data">
+            <div><small>AGENT ID</small><strong>0000</strong></div>
+            <div><small>OPERATION</small><strong>ACCUDATA</strong></div>
+            <div><small>STATUS</small><strong id="cardStatus">MISSION ACCEPTED</strong></div>
+          </div>
+          <div class="card-bottom"><span>AUTHORIZED PERSONNEL ONLY</span><span>◈ TCA / 001</span></div>
+        </article>
+        <button class="primary print-card" id="printCard" type="button">列印／儲存特工識別卡 <span>↗</span></button>
+        <p class="end-transmission">END OF TRANSMISSION.</p>
+        <button class="text-button" id="restart">重新檢視任務簡報 ↺</button>
+      </section>
+
+      <footer class="window-foot"><span>ENCRYPTED CHANNEL: TCA-ACCUDATA</span><span>© TIME CONTROL AGENCY</span></footer>
+    </section>
+    <div class="side-stamp" aria-hidden="true">TOP SECRET<br><b>ACCUDATA</b></div>
+  </main>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
